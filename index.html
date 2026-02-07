@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Messages - Heart Collection Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Decorative Elements -->
+    <div class="decorative-frame top-frame"></div>
+    <div class="decorative-frame bottom-frame"></div>
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration top-right"></div>
+    <div class="corner-decoration bottom-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+    
+    <!-- Floating Stickers -->
+    <div class="floating-sticker love-sticker" style="top:10%; left:5%;"><i class="fas fa-heart"></i></div>
+    <div class="floating-sticker star-sticker" style="top:15%; right:8%;"><i class="fas fa-star"></i></div>
+    <div class="floating-sticker flower-sticker" style="bottom:20%; left:7%;"><i class="fas fa-feather-alt"></i></div>
+    <div class="floating-sticker sparkle-sticker" style="bottom:15%; right:10%;"><i class="fas fa-sparkles"></i></div>
+    
+    <div class="container">
+        <!-- Header with Graphic Design -->
+        <header class="graphic-header">
+            <div class="header-frame">
+                <div class="header-content">
+                    <h1 class="main-title">
+                        <span class="title-text">
+                            <i class="fas fa-heart title-heart"></i>
+                            Secret Love Messages
+                            <i class="fas fa-heart title-heart"></i>
+                        </span>
+                    </h1>
+                    <p class="subtitle">Collect hearts to unlock beautiful love messages! 💕</p>
+                    <div class="header-ornament"></div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Game Container with Styled Frame -->
+            <div class="game-frame">
+                <div class="frame-border">
+                    <div class="frame-corner tl"></div>
+                    <div class="frame-corner tr"></div>
+                    <div class="frame-corner bl"></div>
+                    <div class="frame-corner br"></div>
+                    
+                    <div class="game-container">
+                        <!-- Stats with Stickers -->
+                        <div class="stats-container">
+                            <div class="stat-card heart-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-label">Hearts</span>
+                                    <span class="stat-value" id="hearts-count">0</span>
+                                    <span class="stat-total">/10</span>
+                                </div>
+                                <div class="stat-sticker">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card level-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-label">Level</span>
+                                    <span class="stat-value" id="level-count">1</span>
+                                </div>
+                                <div class="stat-sticker">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card time-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-label">Time</span>
+                                    <span class="stat-value" id="timer">00:00</span>
+                                </div>
+                                <div class="stat-sticker">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Game Area -->
+                        <div class="game-area">
+                            <!-- Message Display with Ornate Frame -->
+                            <div class="message-frame">
+                                <div class="message-display" id="current-message">
+                                    <div class="message-content">
+                                        <p class="welcome-message">Find and click 10 hidden hearts to reveal a special love message!</p>
+                                        <div class="message-ornament">
+                                            <i class="fas fa-heart"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Hearts Grid with Decorative Background -->
+                            <div class="hearts-grid-container">
+                                <div class="grid-background"></div>
+                                <div class="hearts-grid" id="hearts-grid">
+                                    <!-- Hearts will be generated here -->
+                                </div>
+                                <div class="grid-ornament"></div>
+                            </div>
+                            
+                            <!-- Progress Bar with Style -->
+                            <div class="progress-section">
+                                <div class="progress-labels">
+                                    <span class="progress-label">Collection Progress</span>
+                                    <span class="progress-percent" id="progress-text">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-bar" id="progress-bar"></div>
+                                    <div class="progress-dots">
+                                        <div class="progress-dot" style="left:0%"></div>
+                                        <div class="progress-dot" style="left:25%"></div>
+                                        <div class="progress-dot" style="left:50%"></div>
+                                        <div class="progress-dot" style="left:75%"></div>
+                                        <div class="progress-dot" style="left:100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Control Buttons with Icons -->
+                            <div class="controls-section">
+                                <div class="control-group">
+                                    <button id="start-btn" class="control-btn start-btn">
+                                        <span class="btn-icon"><i class="fas fa-play-circle"></i></span>
+                                        <span class="btn-text">Start Game</span>
+                                        <span class="btn-sparkle"></span>
+                                    </button>
+                                    
+                                    <button id="hint-btn" class="control-btn hint-btn">
+                                        <span class="btn-icon"><i class="fas fa-lightbulb"></i></span>
+                                        <span class="btn-text">Get Hint</span>
+                                        <span class="btn-glow"></span>
+                                    </button>
+                                    
+                                    <button id="reset-btn" class="control-btn reset-btn">
+                                        <span class="btn-icon"><i class="fas fa-redo-alt"></i></span>
+                                        <span class="btn-text">Reset Game</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="game-stickers">
+                                    <div class="mini-sticker"><i class="fas fa-heart"></i></div>
+                                    <div class="mini-sticker"><i class="fas fa-star"></i></div>
+                                    <div class="mini-sticker"><i class="fas fa-gem"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Message Reveal Container (Hidden Initially) -->
+            <div class="message-reveal-frame" id="message-reveal-container">
+                <div class="reveal-frame-border">
+                    <div class="reveal-corner rtl"></div>
+                    <div class="reveal-corner rtr"></div>
+                    <div class="reveal-corner rbl"></div>
+                    <div class="reveal-corner rbr"></div>
+                    
+                    <div class="message-reveal-content">
+                        <!-- Celebration Header -->
+                        <div class="celebration-header">
+                            <div class="celebration-sparkle left-sparkle">
+                                <i class="fas fa-sparkles"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-sparkles"></i>
+                            </div>
+                            
+                            <div class="celebration-title">
+                                <h2><i class="fas fa-trophy"></i> Special Message Unlocked! <i class="fas fa-trophy"></i></h2>
+                                <p class="celebration-sub">You've collected all the hearts! 💝</p>
+                            </div>
+                            
+                            <div class="celebration-sparkle right-sparkle">
+                                <i class="fas fa-sparkles"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-sparkles"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Love Message Display -->
+                        <div class="love-message-container">
+                            <div class="message-paper">
+                                <div class="paper-texture"></div>
+                                <div class="paper-content">
+                                    <div class="message-header">
+                                        <div class="seal">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <h3 class="message-title">For Someone Special 💌</h3>
+                                        <div class="date-stamp">Today</div>
+                                    </div>
+                                    
+                                    <div class="message-body">
+                                        <p class="special-message" id="special-message">
+                                            <!-- Special message will appear here -->
+                                        </p>
+                                        
+                                        <div class="message-footer">
+                                            <div class="signature">
+                                                <span class="signature-line"></span>
+                                                <p class="signature-text">With All My Love</p>
+                                            </div>
+                                            <div class="message-embellishment">
+                                                <i class="fas fa-heart"></i>
+                                                <i class="fas fa-feather-alt"></i>
+                                                <i class="fas fa-heart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="paper-stains">
+                                    <div class="stain stain-1"></div>
+                                    <div class="stain stain-2"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-stickers">
+                                <div class="message-sticker"><i class="fas fa-heart"></i></div>
+                                <div class="message-sticker"><i class="fas fa-star"></i></div>
+                                <div class="message-sticker"><i class="fas fa-moon"></i></div>
+                                <div class="message-sticker"><i class="fas fa-sun"></i></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Game Stats -->
+                        <div class="game-stats">
+                            <div class="stats-card">
+                                <div class="stat-item">
+                                    <i class="fas fa-heart stat-icon"></i>
+                                    <div class="stat-info">
+                                        <span class="stat-name">Hearts Collected</span>
+                                        <span class="stat-number" id="final-hearts">10</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-item">
+                                    <i class="fas fa-clock stat-icon"></i>
+                                    <div class="stat-info">
+                                        <span class="stat-name">Time Taken</span>
+                                        <span class="stat-number" id="final-time">00:00</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-item">
+                                    <i class="fas fa-crown stat-icon"></i>
+                                    <div class="stat-info">
+                                        <span class="stat-name">Level Completed</span>
+                                        <span class="stat-number" id="final-level">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-section">
+                            <div class="action-buttons">
+                                <button id="next-message-btn" class="action-btn next-btn">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Next Love Message</span>
+                                    <div class="btn-ribbon"></div>
+                                </button>
+                                
+                                <button id="share-btn" class="action-btn share-btn">
+                                    <i class="fas fa-share-alt"></i>
+                                    <span>Share Message</span>
+                                </button>
+                                
+                                <button id="save-btn" class="action-btn save-btn">
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>Save Message</span>
+                                </button>
+                            </div>
+                            
+                            <div class="action-stickers">
+                                <div class="action-sticker"><i class="fas fa-gift"></i></div>
+                                <div class="action-sticker"><i class="fas fa-bell"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instructions Panel -->
+            <div class="instructions-panel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+                    <div class="panel-ornament"></div>
+                </div>
+                <div class="panel-body">
+                    <div class="instruction-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Start the Game</h4>
+                                <p>Click the "Start Game" button to begin your romantic journey</p>
+                            </div>
+                            <div class="step-sticker"><i class="fas fa-play"></i></div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Find Hearts</h4>
+                                <p>Search and click on all 10 hidden hearts on the screen</p>
+                            </div>
+                            <div class="step-sticker"><i class="fas fa-heart"></i></div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Reveal Message</h4>
+                                <p>Each heart reveals part of a beautiful love message</p>
+                            </div>
+                            <div class="step-sticker"><i class="fas fa-envelope-open-text"></i></div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Collect & Enjoy</h4>
+                                <p>Complete all hearts to see the full special message</p>
+                            </div>
+                            <div class="step-sticker"><i class="fas fa-trophy"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-hearts">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+        </div>
+        <p class="footer-text">Made with <span class="love-text">Love</span> for Special Hearts</p>
+        <p class="footer-note">Every message is a piece of my heart ❤️</p>
+        <div class="footer-hearts">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+        </div>
+    </div>
+</footer>
